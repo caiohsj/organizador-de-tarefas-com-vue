@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-
+    <vue-progress-bar></vue-progress-bar>
     <nav-bar></nav-bar>
 
     <router-view/>
@@ -32,6 +32,12 @@
 <script>
   import NavBar from "./components/NavBar";
   export default {
-    components: {NavBar}
+    components: {NavBar},
+    mounted() {
+      this.$Progress.finish()
+    },
+    created() {
+      this.$Progress.start()
+    }
   }
 </script>

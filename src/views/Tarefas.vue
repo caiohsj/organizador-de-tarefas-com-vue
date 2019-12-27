@@ -26,21 +26,25 @@
             listarTarefas(){
                 servicoTarefa.lista()
                     .then((response) => {
+                        this.$Progress.finish()
                         this.tarefas = response.data
                         console.log(this.tarefas)
                     })
                     .catch((response) => {
                         console.log(response.data)
+                        this.$Progress.fail()
                     })
             },
             removerTarefa(id){
                 servicoTarefa.deletar(id)
                     .then(() => {
                         //Se for removido, é feito a lista das tarefas novamente
+                        this.$Progress.finish()
                         this.listarTarefas()
                     })
                     .catch((response) => {
                         console.log(response)
+                        this.$Progress.fail()
                     })
             },
             pesquisarTarefa(pesquisa){
